@@ -1,16 +1,17 @@
-# New PlantVision Documentation
+# LeafDiseaseVision Documentation
 
 ## Overview
-PlantVision is a project focused on training a deep-learning model to identify plant diseases from images. This project leverages TensorFlow and Keras libraries to preprocess image data, build a deep Convolutional Neural Network (CNN), and train the model on a dataset of plant disease images. Serve the model as an endpoint for a web application. 
+LeafDiseaseVision is a project focused on training a deep-learning model to identify leaf diseases from images. This project leverages TensorFlow and Keras libraries to preprocess image data, build a deep Convolutional Neural Network (CNN), and train the model on the [new plant disease dataset](https://link.springer.com/article/10.1007/s11063-022-10880-z). Serve the model as an endpoint for a web application. 
 
 ## Table of Contents
-- Requirements
-- Data Preparation
-- Model Architecture
-- Training
-- Evaluation
-- Usage
-- References
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Data Preparation](#data-preparation)
+- [Model Architecture](#model-architecture)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Usage](#usage)
+- [References](#references)
 
 ## Requirements
 To run this project, you need to install the following libraries:
@@ -81,7 +82,7 @@ The ImageGenerator one hot encodes the labels, the model was compiled- Keras
 -metrics=['accuracy', ..]
 
 ## Evaluation
-The test dataset follows the same process in Data Preparation section
+The test dataset follows the same process in the [Data Preparation](#data-preparation) section
  
 ```python
 score = model.evaluate(test)
@@ -90,6 +91,9 @@ print(f"Test Accuracy: {score[1]}")
 ```
 
 ## Usage
+The model can be utilized in two ways:
+
+### Load model
 To use the trained model to predict plant diseases from new images, load the model and preprocess the input images similarly to the training images.
 
 ```python
@@ -103,6 +107,9 @@ def predict_image(image_path):
     prediction = model.predict(img_array)
     return decode_predictions(prediction, top=3)[0]
 ```
+
+### Use web endpoint
+TBD
 
 ## References
 - [Colab Notebook](#)
