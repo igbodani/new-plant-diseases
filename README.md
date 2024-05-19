@@ -26,7 +26,7 @@ You can install the required libraries using pip:
 
 ```bash
 pip install tensorflow keras numpy pandas matplotlib
-
+```
 
 ## Data Preparation
 The New Plant Diseases Dataset can be acquired [here](https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset).
@@ -39,10 +39,11 @@ The dataset is expected to be in the following structure:
     └── New Plant Diseases Dataset(Augmented)/
         ├── train/
         └── valid/
+```
 
 ```bash
 !unzip "/content/drive/MyDrive/Colab Notebooks/archive.zip" -d "/content/extracted_folder"
-
+```
 
 To generate features and labels, use the `ImageDataGenerator` from Keras:
 
@@ -61,7 +62,7 @@ train = train_datagen.flow_from_directory(
 , target_size=(HEIGHT,WIDTH), batch_size=size)
 
 Repeat steps for the validation set
-
+```
 ## Model Architecture
 A deep convolutional network is built for image classification. The model includes layers for image preprocessing, convolution, pooling, and dense layers for classification.
 
@@ -72,18 +73,21 @@ The model is trained using the ModelCheckpoint and EarlyStopping callbacks to sa
 checkpoint = ModelCheckpoint("best_model", monitor='val_accuracy', verbose=1, save_best_only=True, mode='max', save_format='tf')
 early_stopping = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
 callbacks_list = [checkpoint, early_stopping]
+```
 
 The ImageGenerator one hot encodes the labels, the model was compiled- Keras
 - optimizer='adam'
 - loss='categorical_crossentropy'
- -metrics=['accuracy', ..]
+-metrics=['accuracy', ..]
 
-##Evaluation
-The test dataset follows the same process in Data Preparation section 
+## Evaluation
+The test dataset follows the same process in Data Preparation section
+ 
 ```python
 score = model.evaluate(test)
 print(f"Test Loss: {score[0]}")
 print(f"Test Accuracy: {score[1]}")
+```
 
 ## Usage
 To use the trained model to predict plant diseases from new images, load the model and preprocess the input images similarly to the training images.
@@ -98,6 +102,7 @@ def predict_image(image_path):
     img_array = img_to_array(img)
     prediction = model.predict(img_array)
     return decode_predictions(prediction, top=3)[0]
+```
 
 ## References
 - [Colab Notebook](#)
