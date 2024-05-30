@@ -117,7 +117,7 @@ def predict_image(image_path):
 
 ### Web app
 
-Classify your plant image [here] (https://plantapp-4px6bmbdbq-uc.a.run.app/) 
+Classify your plant image [here](https://plantapp-4px6bmbdbq-uc.a.run.app/) 
 
 ## References
 - [Colab Notebook](https://github.com/igbodani/new-plant-diseases/blob/main/PlantVision.ipynb)
