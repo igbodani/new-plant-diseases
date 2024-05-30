@@ -74,6 +74,13 @@ The model is trained using the ModelCheckpoint and EarlyStopping callbacks to sa
 checkpoint = ModelCheckpoint("best_model", monitor='val_accuracy', verbose=1, save_best_only=True, mode='max', save_format='tf')
 early_stopping = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
 callbacks_list = [checkpoint, early_stopping]
+
+history = model.fit(
+    train,  # Training data generator
+    validation_data=valid,  # Validation data generator
+    epochs=epochs,  # Number of epochs for training
+    callbacks=[early_stopping]
+)
 ```
 
 The ImageGenerator one hot encodes the labels, the model was compiled- Keras
@@ -108,10 +115,11 @@ def predict_image(image_path):
     return decode_predictions(prediction, top=3)[0]
 ```
 
-### Use web endpoint
-TBD
+### Web app
+
+Classify your plant image [here] (https://plantapp-4px6bmbdbq-uc.a.run.app/) 
 
 ## References
-- [Colab Notebook](#)
+- [Colab Notebook](https://github.com/igbodani/new-plant-diseases/blob/main/PlantVision.ipynb)
 - [Keras Documentation](https://keras.io/)
 - [TensorFlow Documentation](https://www.tensorflow.org/)
