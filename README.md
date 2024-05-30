@@ -62,7 +62,7 @@ train = train_datagen.flow_from_directory(
     directory='/extracted_path/train'
 , target_size=(HEIGHT,WIDTH), batch_size=size)
 
-Repeat steps for the validation set
+Repeat steps for the validation & test set
 ```
 ## Model Architecture
 A deep convolutional network is built for image classification. The model includes layers for image preprocessing, convolution, pooling, and dense layers for classification.
